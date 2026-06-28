@@ -2,8 +2,6 @@ import { HttpService } from '@nestjs/axios';
 import { Injectable, Logger } from '@nestjs/common';
 import { firstValueFrom } from 'rxjs';
 import { serviceConfig } from 'src/config/gateway.config';
-import { AxiosResponse } from "axios"
-
 
 @Injectable()
 export class ProxyService {
@@ -41,7 +39,7 @@ export class ProxyService {
                             timeout: service.timeout,
                            }) 
                      );
-                     return response;
+                     return response.data;
               } catch(error: any){
                      this.logger.error(`Error proxying request to ${url} with method ${method} in service ${serviceName}: ${error.message}`);
                      throw error;
