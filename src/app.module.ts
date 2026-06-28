@@ -5,6 +5,7 @@ import { ProxyModule } from './proxy/proxy.module';
 import { AppController } from './app.controller';
 import { MiddlewareModule } from './middleware/middleware.module';
 import { LoggingMiddleware } from './middleware/logging/logging.middleware';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -27,7 +28,10 @@ import { LoggingMiddleware } from './middleware/logging/logging.middleware';
             ttl: 900000, // 15 minutes
             limit: 1000, // 1000 requests per 15 minutes
           }
-     ]), ProxyModule, MiddlewareModule
+     ]),
+      ProxyModule,
+      MiddlewareModule,
+      AuthModule
   ],
   controllers: [AppController],
   providers: [],
